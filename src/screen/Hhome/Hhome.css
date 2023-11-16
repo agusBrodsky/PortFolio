@@ -1,0 +1,100 @@
+
+body{
+    background: #081b29;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.claseRow{
+    align-items: center;
+    height: 80vh;
+}
+.wrapper{
+    position:relative;
+    width:800px;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border:3px solid #00ffff;
+    box-shadow: 0 0 50px 0 #00a6bc;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-size:35px;
+}
+.submit{
+    border:none;
+    outline: none;
+    width: 288px;
+    margin-top: 25px;
+    padding: 10px 0;
+    font-size: 20px;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(45deg,#0ef, #c800ff);
+    
+}
+.jeje{
+    text-decoration: none !important;
+    color:white;
+}
+.footer{
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+.link{
+    color:#0ef;
+    text-decoration: none;
+}
+.banner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 450px;
+    height: 100%;
+    background: linear-gradient(to right, #0ef, #c800ff);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+    padding-right: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+      text-decoration: none;
+    margin: 0;
+    padding:0;
+    font-family: arial;
+    color: #fff;
+}
+
+@media (max-width: 1000px) {
+    .banner {
+        width: 50%; /* Cambia el ancho a ocupar el 100% en pantallas más pequeñas */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+        padding-right: 20px; /* Ajusta el relleno según sea necesario para pantallas más pequeñas */
+        
+        align-items: center; /* Centra los elementos flexibles en pantallas más pequeñas */
+    }
+    .wel_text{
+        transform: translateX(30%);
+    }
+}
+
+.wel_text{
+    font-size: 40px;
+    margin-top: -50px;
+    line-height: 50px;
+    
+}
+.para{
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}

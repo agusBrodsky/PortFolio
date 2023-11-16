@@ -1,0 +1,29 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343a40;
+    padding: 10px 20px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'TuFuente', sans-serif;
+    margin: 0 20px;
+}
+
+.navbar-link:hover {
+    text-decoration: underline;
+}
+
+.content-wrapper {
+    margin-top: 70px; /* Ajusta el valor según sea necesario para evitar la superposición */
+    padding: 20px; /* Añade espacio para que el contenido no esté pegado al borde superior */
+}

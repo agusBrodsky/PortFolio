@@ -1,0 +1,15 @@
+*{
+  margin:15px;
+}
+.claseTextos{
+  color:black;
+  
+}
+.claseTitulos{
+  font-weight:bold !important;
+}
+.claseImagenes{
+  margin:0px;
+  height: auto;
+  align-self: center;
+}

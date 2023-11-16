@@ -1,0 +1,73 @@
+.container {
+  padding: 20px; /* Añadimos un poco de espacio interno */
+  text-align: center; /* Centramos el contenido en el contenedor */
+}
+
+.container-user {
+  display: flex; /* Usamos flex para alinear elementos horizontalmente */
+  justify-content: center; /* Centramos horizontalmente los elementos */
+  align-items: center; /* Centramos verticalmente los elementos */
+  margin: 0;
+}
+
+.titulo {
+  /* Estilos del título si es necesario */
+}
+.rounded-image {
+  border-radius: 50%; /* Hacemos la imagen redonda */
+  max-width: 30%; /* Para que la imagen sea responsiva y no se desborde */
+  height: auto; /* Ajustamos la altura automáticamente según el ancho */
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+}
+.container-body{
+  /*Ocupa todo lo que se tiene que ocultar!! */
+}
+.container-category{
+  /*Este div es el que separa por category (por ejemplo Experience!)*/
+}
+.text-container2{
+  /*Es el div del texto */
+  width: 40%;
+}
+.container-card{
+  /*Es el div de cada card en separada */
+  display: flex;
+  justify-content:center;
+  padding:20px;
+}
+
+.card {
+  /*Diseño de la card*/
+  border: 1px solid #000000; /* Borde para la tarjeta */
+  width: 50%;
+  height: auto;
+  
+  border-radius: 0.375rem; /* Borde redondeado */
+}
+.class-cardBody{
+  display: flex;
+  justify-content: space-between;
+}
+.izq-card{
+  max-width: 50%;
+  height: auto;
+}
+.der-card{
+  max-width: 50%;
+  height: auto;
+}
+  .text-primary {
+    color: #1e30f3; /* Color de texto primario */
+  }
+  
+  .small {
+    font-weight: bold; /* Texto pequeño en negrita */
+  }
+  
+  .text-muted {
+    color: #6c757d; /* Texto pequeño en color apagado */
+  }
