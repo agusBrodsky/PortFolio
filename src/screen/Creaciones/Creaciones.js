@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, useNavigate } from 'react-router-dom';
+
 import './Creaciones.css';
 import axios from 'axios';
 import ProjectCard from "../../components/ProjectCard/ProjectCard.js";
@@ -8,6 +10,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Banner from '../../components/Banner/Banner.js';
 
 const Creaciones = () => {
+
+  let navigate = useNavigate();
+  
   const [creaciones, setCreaciones] = useState([]);
   const [autor, setAutor] = useState(""); // Quiero guardar el nombre del creador para mostrar los trabajos de cada uno
   const [loading, setLoading] = useState(false); // Lo arranco asi por ahora!!
@@ -18,7 +23,7 @@ const Creaciones = () => {
 
 
   useEffect(() => {
-    axios.get('./listaCreaciones.JSON')
+    axios.get('../listaCreaciones.JSON')
       .then(res => {
         setCreaciones(res.data);
         console.log(res.data);
@@ -39,8 +44,8 @@ const Creaciones = () => {
     }
   }, [autorSeleccionado, creaciones]);
 
-  const handleButtonClick = (id)=>{
-    console.log(id);
+  const handleButtonClick = (id)=>{ // Funcion ver mas info!
+    
   }
   return (
     <Container>
@@ -77,7 +82,7 @@ const Creaciones = () => {
               ghLink={creacion.gitRepo}
               linkUser={creacion.linkUser}
               demoLink="null"
-              onClick={handleButtonClick}
+              onClick={() => navigate(`/Detalle/${creacion.id}`)}
             />
           </Col>
         ))}

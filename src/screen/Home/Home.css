@@ -1,3 +1,5 @@
+
+/*
 .home-container {
   display: flex;
   justify-content: space-around;
@@ -6,11 +8,8 @@
   justify-content: space-around;
 
 }
-/*div{
-  border:2px solid black;
-}*/
 .text-section {
-  margin: 20px; /* Cambié el margen superior a 20px para evitar que el contenido se desplace demasiado hacia abajo */
+  margin: 20px; 
   padding: 20px;
 }
 
@@ -35,7 +34,7 @@
 }
 
 .profile-img {
-  max-width: 60%; /* Establece el tamaño máximo de la imagen al 60% del contenedor padre */
+  max-width: 60%;
   height: auto;
 }
 .clase-boton{
@@ -43,11 +42,7 @@
   height: 50px;
   display: flex;
   justify-content: space-around;
-/*  display: inline-block;
-  justify-content: center;
-  margin:20px;
-  width: 30%;
-  height: 50px;*/
+
 }
 .boton-gilf{
   color:white;
@@ -59,3 +54,4 @@
   width: 30%;
   height:100%;
 }
+*/

@@ -7,6 +7,7 @@ import Creaciones from "./screen/Creaciones/Creaciones.js";
 import Detalle from "./screen/Detalle/Detalle.js";
 import Layout from "./components/Layout/Layout.js";
 import AboutUs from './screen/AboutUs/AboutUs';
+
 function App() {
   // Hhome es la nueva pestaña de inicioo, no la remplace para quej despues decidamos con cual nos quedamos pero eso!!!!!
   // para poner que se inicie con uno tenes qque modificar el Route y agregarle index (acordate de sacarselo a el otro que lo tenga)
@@ -20,7 +21,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/Creaciones" element={<Creaciones />} />
-            <Route path="/Detalle" element={<Detalle />} /> 
+            <Route path="/Detalle/:id" element={<Detalle />} /> 
         </Route>
         </Routes>
       </BrowserRouter>

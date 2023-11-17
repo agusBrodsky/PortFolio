@@ -1,25 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 //import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './Detalle.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 function Detalle() {
+    const { id } = useParams();
+    const [creacion, setCreacion] = useState({});
+      
 
-    /*const [creaciones, setCreaciones] = useState([]);
+      useEffect(() => {
+        axios.get('../listaCreaciones.JSON')
+      .then(res => {
+        res.data.forEach(element => {
+            if (element.id == id) setCreacion(element);
+        });
+        console.log(creacion);
+      })
+      }, []);
 
-    useEffect(()=>{
-        console.log("Primer useEffect! - (levantar mis creaciones)");
-        axios.get('https://dummyjson.com/products')
-        .then(res => {
-            console.log("Muestro los productos (res.data.products) -"+res.data.products);
-            setCreaciones(res.data.products);
-        })
-    },[]);*/
     return (
-    <>      
-    </>
-  );
+        <div className='container'>
+            <header className="header-container">
+
+            </header>
+            <main className="main-container">
+                <h1>{creacion.id}</h1>
+            </main>
+            <footer className="footer-container">
+            </footer>
+        </div>
+    );
 }
 
 export default Detalle;

@@ -1,0 +1,35 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 12px;
+}
+body{
+    font-size: 1rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;    
+}
+/* HEADER! */
+.header-container{
+background-color: red;
+height: 80px;
+}
+/* MAIN */
+.main-container{
+    background-color: green;
+    height: 100vh;
+}
+.main-body-container{ 
+
+}
+/* FOOTER */
+.footer-container{
+    background-color: grey;
+    height: 120px;
+}
