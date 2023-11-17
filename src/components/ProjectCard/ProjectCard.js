@@ -11,12 +11,11 @@ function ProjectCards(props) {
       <Card.Img className="claseImagenes" variant="top" src={props.imgPath} />
       <Card.Body>
         <Card.Title className="claseTitulos">{props.title}</Card.Title>
-        <Card.Title className="claseTitulos">By - {props.usuario}</Card.Title>
         <Card.Text className="claseTextos">
-          {props.descripcion}
+          By - {props.usuario}
         </Card.Text>
         <div style={{ display: "block" , padding:'0.5vw'}} >
-         <Button variant="secondary"  href={props.ghLink} target="_blank">
+         <Button variant="secondary"  href={props.ghLink} target="_blank" style={{ margin:'0.5vw'}}>
             <BsGithub /> &nbsp;
             {props.isBlog ? "Blog" : "GitHub"}
           </Button>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 import './Creaciones.css';
 import axios from 'axios';
@@ -14,8 +14,6 @@ const Creaciones = () => {
   let navigate = useNavigate();
   
   const [creaciones, setCreaciones] = useState([]);
-  const [autor, setAutor] = useState(""); // Quiero guardar el nombre del creador para mostrar los trabajos de cada uno
-  const [loading, setLoading] = useState(false); // Lo arranco asi por ahora!!
   const autoresUnicos = [...new Set(creaciones.map(creacion => creacion.usuario))]; // array con los autores posibles
   const [autorSeleccionado, setAutorSeleccionado] = useState("Todos");
   const [creacionesFiltradas, setCreacionesFiltradas] = useState([]);

@@ -13,23 +13,34 @@ body{
 
 .container{
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 /* HEADER! */
 .header-container{
-background-color: red;
+border: 2px solid red;
 height: 80px;
 }
 /* MAIN */
 .main-container{
-    background-color: green;
-    height: 100vh;
+    height: 90vh;
 }
-.main-body-container{ 
+.main-detalle-body{
+    text-align: center;
+}
 
+.main-detalle-texto{
+    font-size: 28px;
 }
-/* FOOTER */
-.footer-container{
-    background-color: grey;
-    height: 120px;
+.class-button{
+    font-size: 28px;
+}
+.main-detalle-buttonBack{
+    height: 10vh;
+}
+.class-buttonBack{
+    border:2px solid gray;
+    background-color:transparent;
+    color:white;
+    background-color: linear-gradient(to right, #0ef, #c800ff);
+    font-size: 20px;
 }
