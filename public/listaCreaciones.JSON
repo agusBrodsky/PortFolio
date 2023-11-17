@@ -3,11 +3,14 @@
         "id":1,
         "imagen":"https://www.ellitoral.com/images/2023/08/16/CuuAcZ6EH_1300x655__1.jpg",
         "titulo":"ProyectoFinal-Helpark",
-        "descripcion":"Aplicacion para eficientizar la ayuda a la gente con parkinson",
+        "descripcion":"Aplicacion para eficientizar la ayuda a la gente con Parkinson",
         "fecha":null,
         "gitRepo":"https://github.com/agusBrodsky/TrabajoProyecyoFinal",
         "linkUser":"https://ar.linkedin.com/in/agustin-brodsky-037717298",
-        "usuario":"Agustin Brodsky"
+        
+        "usuario":"Agustin Brodsky",
+        "multAutor": false
+        
     },
     {
         "id":2,
@@ -17,7 +20,9 @@
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/Proyecto-Final-2023",
         "linkUser":"https://ar.linkedin.com/in/facundo-rozenbaum-248762297",
-        "usuario":"Facundo Rozenbaum"
+
+        "usuario":"Facundo Rozenbaum",
+        "multAutor": false
     },
     {
         "id":3,
@@ -26,7 +31,9 @@
         "descripcion":"Aplicacion para login y registrarse",
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/Dai-Brodsky-Rozenbaum-Jaichenco",
-        "usuario":"Facundo Rozenbaum y Agustín Brodsky"
+
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true
     },
     {
         "id":4,
@@ -36,6 +43,8 @@
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
         "linkUser":"https://ar.linkedin.com/in/facundo-rozenbaum-248762297",
-        "usuario":"Facundo Rozenbaum"
+
+        "usuario":"Facundo Rozenbaum",
+        "multAutor": false
     }
 ]

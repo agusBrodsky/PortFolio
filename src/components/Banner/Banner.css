@@ -1,0 +1,40 @@
+.banner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 45vw;
+    height: 100%;
+    background: linear-gradient(to right, #0ef, #c800ff);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+    padding-right: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+      text-decoration: none;
+    margin: 0;
+    padding:0;
+    font-family: arial;
+    color: #fff;
+}
+
+@media (max-width: 1000px) {
+    .banner {
+        width: 50%; /* Cambia el ancho a ocupar el 100% en pantallas más pequeñas */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+        padding-right: 20px; /* Ajusta el relleno según sea necesario para pantallas más pequeñas */
+        
+        align-items: center; /* Centra los elementos flexibles en pantallas más pequeñas */
+    }
+    .wel_text{
+        transform: translateX(30%);
+    }
+}
+
+.wel_text{
+    margin:auto;
+    font-size: 40px;
+    margin-left: 22vw;
+    line-height: 50px;
+    
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Hhome.css'; // Asegúrate de tener tu archivo CSS importado correctamente
 import { Container, Row, Col } from "react-bootstrap";
-
+import Banner from '../../components/Banner/Banner.js';
 import { Link } from "react-router-dom";
 
 const Hhome = () => {
@@ -14,9 +14,7 @@ const Hhome = () => {
             <button className="submit"><Link to="/AboutUs" className='jeje'>Todo sobre nosotros</Link></button>
         </Col>
         <Col>
-        <div className="banner">
-        <h1 className="wel_text">BIENVENIDO<br /></h1>
-        </div>
+        <Banner texto="BIENVENIDO"/>
         </Col>
       </Row>
     </Container>

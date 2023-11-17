@@ -6,9 +6,8 @@ import { FaLinkedin } from "react-icons/fa";
 import './ProjectCard.css'; 
 
 function ProjectCards(props) {
-  
   return (
-    <Card style={{ width: '24rem' }}>
+    <Card style={{ width: '20rem',margin:"1vw"}}>
       <Card.Img className="claseImagenes" variant="top" src={props.imgPath} />
       <Card.Body>
         <Card.Title className="claseTitulos">{props.title}</Card.Title>
@@ -16,18 +15,18 @@ function ProjectCards(props) {
         <Card.Text className="claseTextos">
           {props.descripcion}
         </Card.Text>
-        <div style={{ display: "flex"}} >
-         <Button variant="primary"  href={props.ghLink} target="_blank">
+        <div style={{ display: "block" , padding:'0.5vw'}} >
+         <Button variant="secondary"  href={props.ghLink} target="_blank">
             <BsGithub /> &nbsp;
             {props.isBlog ? "Blog" : "GitHub"}
           </Button>
-          <Button variant="primary"  href={props.linkUser} target="_blank">
+          <Button variant="secondary"  href={props.linkUser} target="_blank" style={{ margin:'0.5vw'}}>
             <FaLinkedin /> 
             {props.isBlog ? "Blog" : "Linkedin"}
           </Button>
         </div>
-          {"\n"}
-          {"\n"}
+        <Button variant="secondary" onClick={() => props.onClick(props.id)} >ver detalle del proyecto</Button>
+        
       </Card.Body>
     </Card>
   );

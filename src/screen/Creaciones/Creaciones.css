@@ -1,17 +1,9 @@
-/*.creaciones-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .creacion-card {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid #ccc; /* Agregar un borde de 1 píxel sólido de color gris claro 
-  }
-  */
+
   .container{
-    
+    background: (to right, #0ef, #c800ff );
+
+  }
+  .header-text-title{
+    color:white;
+    font-family:monospace;
   }
