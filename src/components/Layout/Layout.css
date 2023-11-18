@@ -1,9 +1,11 @@
 
 .navbar {
+    background: linear-gradient(to left, #0ef, #c800ff);
+    margin-bottom: 5vh;
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    height: 5vw;
+    height: 3vw;
     top: 0;
     width: 100%;
 }

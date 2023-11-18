@@ -7,7 +7,6 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard.js";
 import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Banner from '../../components/Banner/Banner.js';
 
 const Creaciones = () => {
 
@@ -52,6 +51,7 @@ const Creaciones = () => {
           <Col style={{ color: 'black' }}>
           <h1 className='header-text-title'>Nuestras Creaciones!</h1>
           <DropdownButton
+            variant="secondary"
             id="dropdown-autores"
             title={`Filtrar por Autor: ${autorSeleccionado || "Todos"}`}
           >

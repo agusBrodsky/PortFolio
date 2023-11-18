@@ -1,14 +1,14 @@
 .banner {
     position:absolute;
+    top:0px !important;
     width: 35vw;
     height: 100%;
-    background: linear-gradient(to right, #0ef, #c800ff);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+    background: linear-gradient(to left, #0ef, #c800ff);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
     
 }
-.wel_text{
-    margin:0px;
-    text-align:center;
+.wel_text{ 
+    margin:20vh;
     font-size: 35px;
     
 }
