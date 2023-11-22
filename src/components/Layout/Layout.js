@@ -12,6 +12,7 @@ const Layout = () => {
                         <Nav.Link > <NavLink to="/" className="navbar-link"> Home </NavLink></Nav.Link>
                         <Nav.Link ><NavLink to="/Creaciones" className="navbar-link"> Creaciones </NavLink></Nav.Link>
                         <Nav.Link ><NavLink to="/AboutUs" className="navbar-link"> AboutUs </NavLink></Nav.Link>
+                        <Nav.Link ><NavLink to="/Favorito" className="navbar-link"> Favoritos </NavLink></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

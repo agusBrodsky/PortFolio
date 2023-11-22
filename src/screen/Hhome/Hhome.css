@@ -1,14 +1,15 @@
-body {
-    background: #081b29;
+.classRow{
+    height: 75vh;
+    display: flex;
+}
+.colLeft{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:-15vh;
 }
 
-.claseCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    
-}
 .wrapper {
     position: relative;
     width: 800px;
@@ -50,8 +51,12 @@ body {
 }
 
 .claseImagen {
-    width: auto;
-    height: 45%;
+    display: flex;
+    flex-direction: column;
+    /*BUscar como centrar verticlamente!!*/
+    border: 1px solid transparent;
+    width: 40vh;
+    height: auto;
     border-radius: 5%;
 }
 
@@ -64,4 +69,14 @@ body {
 .link {
     color: #0ef;
     text-decoration: none;
+}
+@media (min-width: 1400px){
+    .container{
+        max-width: 100vh; 
+    }
+}
+@media (min-width: 1280px){
+    .container{
+        max-width: 100%; 
+    }
 }

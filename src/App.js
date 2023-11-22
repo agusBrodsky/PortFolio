@@ -6,6 +6,7 @@ import Creaciones from "./screen/Creaciones/Creaciones.js";
 import Detalle from "./screen/Detalle/Detalle.js";
 import Layout from "./components/Layout/Layout.js";
 import AboutUs from './screen/AboutUs/AboutUs';
+import Favorito from './screen/Favorito/Favorito.js';
 
 function App() {
   // Hhome es la nueva pestaña de inicioo, no la remplace para quej despues decidamos con cual nos quedamos pero eso!!!!!
@@ -21,6 +22,7 @@ function App() {
             <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/Creaciones" element={<Creaciones />} />
             <Route path="/Detalle/:id" element={<Detalle />} /> 
+            <Route path="/Favorito" element={<Favorito />} /> 
         </Route>
         </Routes>
       </BrowserRouter>

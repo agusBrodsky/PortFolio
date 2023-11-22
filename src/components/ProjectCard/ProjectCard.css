@@ -1,11 +1,10 @@
 .claseTextos{
-  color:black;
-}
-.claseTitulos{
+  font-size: 2vh;
   font-weight:bold !important;
 }
-.claseImagenes{
-  margin:0px;
-  height: auto;
-  align-self: center;
+
+
+.claseTitulos{
+  font-size:3vh;
+  font-weight:bold !important;
 }

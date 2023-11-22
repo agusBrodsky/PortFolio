@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import {useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import './Creaciones.css';
+
 import axios from 'axios';
 import ProjectCard from "../../components/ProjectCard/ProjectCard.js";
 import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { FaVestPatches } from 'react-icons/fa';
 
 const Creaciones = () => {
 
   let navigate = useNavigate();
-  
+
   const [creaciones, setCreaciones] = useState([]);
   const autoresUnicos = [...new Set(creaciones.map(creacion => creacion.usuario))]; // array con los autores posibles
   const [autorSeleccionado, setAutorSeleccionado] = useState("Todos");
   const [creacionesFiltradas, setCreacionesFiltradas] = useState([]);
+  let favoritosGuardados = null;
 
-
+  const [favoritos, setFavoritos] = useState(() => { // inicializo el array con el localStorage o vacio si no hay data!
+    favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
+    return favoritosGuardados || [];
+  });
 
   useEffect(() => {
     axios.get('../listaCreaciones.JSON')
       .then(res => {
         setCreaciones(res.data);
-        console.log(res.data);
+
+        if (!favoritosGuardados) {
+          setFavoritos(res.data.map(creacion => ({
+            id: creacion.id,
+            almacenar: false
+          })));
+        }
       })
   }, []);
 
@@ -41,18 +52,30 @@ const Creaciones = () => {
     }
   }, [autorSeleccionado, creaciones]);
 
-  const handleButtonClick = (id)=>{ // Funcion ver mas info!
-    
+  const agregarFavorito = (id) => { // ya funciona!!
+    setFavoritos((favs) =>
+      favs.map((favorito) =>
+        (favorito.id === id) ? { ...favorito, almacenar: !favorito.almacenar } : favorito
+      )
+    );
+    console.log(`funcion agregar fav id:${id}`);
+
   }
+
+  useEffect(() => {
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+  }, [favoritos]);
+
+
   return (
     <Container>
-      
       <Row>
-          <Col style={{ color: 'black' }}>
+        <Col style={{ color: 'black' }}>
           <h1 className='header-text-title'>Nuestras Creaciones!</h1>
           <DropdownButton
-            variant="secondary"
+            style={{border:'2px solid black'}}
             id="dropdown-autores"
+            size="lg"
             title={`Filtrar por Autor: ${autorSeleccionado || "Todos"}`}
           >
             <Dropdown.Item onClick={() => setAutorSeleccionado("Todos")}>Todos</Dropdown.Item>
@@ -81,6 +104,7 @@ const Creaciones = () => {
               linkUser={creacion.linkUser}
               demoLink="null"
               onClick={() => navigate(`/Detalle/${creacion.id}`)}
+              favorito={() => { agregarFavorito(creacion.id) }}
             />
           </Col>
         ))}
