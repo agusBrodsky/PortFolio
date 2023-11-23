@@ -1,5 +1,5 @@
 .classRow{
-    height: 75vh;
+    height: 60vh;
     display: flex;
 }
 .colLeft{
@@ -35,7 +35,7 @@
     border: none;
     outline: none;
     width: 288px;
-    margin-top: 25px;
+    margin: 20px;
     padding: 10px 0;
     font-size: 20px;
     border-radius: 40px;

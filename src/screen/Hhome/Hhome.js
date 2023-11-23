@@ -1,54 +1,81 @@
-import React from 'react';
-import './Hhome.css'; // Asegúrate de tener tu archivo CSS importado correctamente
-import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import './Hhome.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { FaVestPatches } from 'react-icons/fa';
 import fotoPorfolio from '../../assets/FotoPorfolio.jpeg';
-// falta agregar la img // <img className='claseImagen' src={fotoPorfolio} />
 
-/*
---------------------- codigo viejo -----------------------
-<Container>
-     <Row>
-       <Col sm={6} className='claseCol'>
-             <h1 className="title">Nuestro Portfolio</h1>
-             <button className="submit"><Link to="/Creaciones" className='jeje'>Nuestras creaciones</Link></button>
-             <button className="submit"><Link to="/AboutUs" className='jeje'>Todo sobre nosotros</Link></button>
-       </Col>
-       <Col sm={6} className='claseCol'>
-         <img className='claseImagen' src={fotoPorfolio} />
-       </Col>
-     </Row>
-
-   </Container>
------------------------------------------------------------
-
-*/
 const Hhome = () => {
+  const [creaciones, setCreaciones] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get('../listaCreaciones.JSON').then((res) => {
+      setCreaciones(res.data.slice(0, 6)); // Mostrar solo las primeras 6 creaciones
+    });
+  }, []);
+
+  const handlePhotoClick = (id) => {
+    navigate(`/Detalle/${id}`);
+  };
+
   return (
     <Container className='container'>
       <Row style={{ height: '10vh' }}>
         <Col>
-        <h1 style={{ background: 'linear-gradient(to left, #0ef, #c800ff)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Bienvenidos a nuestro PortFolio!!</h1>
+          <h1 style={{ background: 'linear-gradient(to left, #0ef, #c800ff)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
+            Bienvenidos a nuestro Portfolio!!
+          </h1>
         </Col>
       </Row>
 
       <Row className='classRow'>
         <Col className='colLeft'>
-          <h1 style={{ background: 'linear-gradient(to left, #0ef, #c800ff)', WebkitBackgroundClip: 'text', color: 'transparent' }} className="title">Acerca de nuestro Portfolio</h1>
+          <h1 style={{ background: 'linear-gradient(to left, #0ef, #c800ff)', WebkitBackgroundClip: 'text', color: 'transparent' }} className="title">
+            Acerca de nuestro Portfolio
+          </h1>
           <div style={{ display: 'flex' }}>
-            <button className="submit"><Link to="/Creaciones" className='jeje'>Nuestras creaciones</Link></button>
-            <button className="submit"><Link to="/AboutUs" className='jeje'>Todo sobre nosotros</Link></button>
+            <button className="submit">
+              <Link to="/Creaciones" className='jeje'>
+                Nuestras creaciones
+              </Link>
+            </button>
+            <button className="submit">
+              <Link to="/AboutUs" className='jeje'>
+                Todo sobre nosotros
+              </Link>
+            </button>
           </div>
         </Col>
         <Col className='colLeft'>
-          <img className='claseImagen' src={fotoPorfolio} />
+          <img
+            className='claseImagen'
+            src={fotoPorfolio}
+            alt="Portfolio"
+            style={{ cursor: 'pointer' }}
+          />
         </Col>
       </Row>
-      <Row style={{ height: '8vh', background:'linear-gradient(to left, #0ef, #c800ff)' }}>
-        <h1  style={{color:'white'}} >Footer</h1>
+
+      <h1 style={{marginBottom:'40px'}}> Creaciones destacadas </h1>
+
+      <Row>
+        {creaciones.map((creacion) => (
+          <Col key={creacion.id} xs={12} md={6} lg={4} xl={3} className="mb-4">
+            <h3>{creacion.titulo}</h3>
+            <img
+              src={creacion.imagen}
+              alt={`Creación ${creacion.id}`}
+              className="creacion-photo"
+              style={{ width: '100%', cursor: 'pointer' }}
+              onClick={() => handlePhotoClick(creacion.id)}
+            />
+          </Col>
+        ))}
       </Row>
     </Container>
   );
-}
+};
 
 export default Hhome;

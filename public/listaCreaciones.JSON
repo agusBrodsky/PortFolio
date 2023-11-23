@@ -6,10 +6,10 @@
         "descripcion":"Aplicacion para eficientizar la ayuda a la gente con Parkinson",
         "fecha":null,
         "gitRepo":"https://github.com/agusBrodsky/TrabajoProyecyoFinal",
-        "linkUser":"https://ar.linkedin.com/in/agustin-brodsky-037717298",
-        
+        "linkUser":"https://ar.linkedin.com/in/agustin-brodsky-037717298",   
         "usuario":"Agustin Brodsky",
-        "multAutor": false
+        "multAutor": false,
+        "favoritos": false
         
     },
     {
@@ -20,9 +20,9 @@
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/Proyecto-Final-2023",
         "linkUser":"https://ar.linkedin.com/in/facundo-rozenbaum-248762297",
-
         "usuario":"Facundo Rozenbaum",
-        "multAutor": false
+        "multAutor": false,
+        "favoritos": false
     },
     {
         "id":3,
@@ -31,9 +31,9 @@
         "descripcion":"Aplicacion para login y registrarse",
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/Dai-Brodsky-Rozenbaum-Jaichenco",
-
         "usuario":"Facundo Rozenbaum y Agustín Brodsky",
-        "multAutor": true
+        "multAutor": true,
+        "favoritos": false
     },
     {
         "id":4,
@@ -43,8 +43,9 @@
         "fecha":null,
         "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
         "linkUser":"https://ar.linkedin.com/in/facundo-rozenbaum-248762297",
-
         "usuario":"Facundo Rozenbaum",
-        "multAutor": false
+        "multAutor": false,
+        "favoritos": false
     }
+    
 ]

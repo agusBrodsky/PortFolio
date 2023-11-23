@@ -1,79 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Creaciones.css';
-
-import axios from 'axios';
-import ProjectCard from "../../components/ProjectCard/ProjectCard.js";
-import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { FaVestPatches } from 'react-icons/fa';
+
+import axios from 'axios';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Creaciones = () => {
-
   let navigate = useNavigate();
 
   const [creaciones, setCreaciones] = useState([]);
-  const autoresUnicos = [...new Set(creaciones.map(creacion => creacion.usuario))]; // array con los autores posibles
-  const [autorSeleccionado, setAutorSeleccionado] = useState("Todos");
+  const autoresUnicos = [...new Set(creaciones.map((creacion) => creacion.usuario))];
+  const [autorSeleccionado, setAutorSeleccionado] = useState('Todos');
   const [creacionesFiltradas, setCreacionesFiltradas] = useState([]);
   let favoritosGuardados = null;
 
-  const [favoritos, setFavoritos] = useState(() => { // inicializo el array con el localStorage o vacio si no hay data!
+  const [favoritos, setFavoritos] = useState(() => {
     favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
     return favoritosGuardados || [];
   });
 
   useEffect(() => {
-    axios.get('../listaCreaciones.JSON')
-      .then(res => {
-        setCreaciones(res.data);
+    axios.get('../listaCreaciones.JSON').then((res) => {
+      setCreaciones(res.data);
 
-        if (!favoritosGuardados) {
-          setFavoritos(res.data.map(creacion => ({
+      if (!favoritosGuardados) {
+        setFavoritos(
+          res.data.map((creacion) => ({
             id: creacion.id,
-            almacenar: false
-          })));
-        }
-      })
+            almacenar: false,
+          }))
+        );
+      }
+    });
   }, []);
 
-  useEffect(() => { // filtra las creaciones correspondientes
-    if (autorSeleccionado == "Todos") {
+  useEffect(() => {
+    if (autorSeleccionado === 'Todos') {
       setCreacionesFiltradas(creaciones);
-    }
-    else {
+    } else {
       if (autorSeleccionado) {
-        const creacionesFiltradas = creaciones.filter(creacion => creacion.usuario === autorSeleccionado && !creacion.multAutor);
+        const creacionesFiltradas = creaciones.filter(
+          (creacion) => creacion.usuario === autorSeleccionado && !creacion.multAutor
+        );
         setCreacionesFiltradas(creacionesFiltradas);
       } else {
-        setCreacionesFiltradas(creaciones.filter(creacion => !creacion.multAutor));
+        setCreacionesFiltradas(creaciones.filter((creacion) => !creacion.multAutor));
       }
     }
   }, [autorSeleccionado, creaciones]);
 
-  const agregarFavorito = (id) => { // ya funciona!!
-    setFavoritos((favs) =>
-      favs.map((favorito) =>
-        (favorito.id === id) ? { ...favorito, almacenar: !favorito.almacenar } : favorito
-      )
-    );
-    console.log(`funcion agregar fav id:${id}`);
+  const handlePhotoClick = (id) => {
+    navigate(`/Detalle/${id}`);
+  };
 
-  }
-
-  useEffect(() => {
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
-  }, [favoritos]);
-
-
-  return (
+ return (
     <Container>
       <Row>
         <Col style={{ color: 'black' }}>
           <h1 className='header-text-title'>Nuestras Creaciones!</h1>
-          <DropdownButton
-            style={{border:'2px solid black'}}
+        </Col>
+        <Row>
+        <DropdownButton
+            style={{margin:"15px"}}
             id="dropdown-autores"
             size="lg"
             title={`Filtrar por Autor: ${autorSeleccionado || "Todos"}`}
@@ -88,29 +78,25 @@ const Creaciones = () => {
               );
             })}
           </DropdownButton>
-        </Col>
+          </Row>
       </Row>
       <Row>
-        {creacionesFiltradas.map(creacion => (
-          <Col key={creacion.id}>
-            <ProjectCard
-              id={creacion.id}
-              usuario={creacion.usuario}
-              imgPath={creacion.imagen}
-              isBlog={false}
-              title={creacion.titulo}
-              descripcion={creacion.descripcion}
-              ghLink={creacion.gitRepo}
-              linkUser={creacion.linkUser}
-              demoLink="null"
-              onClick={() => navigate(`/Detalle/${creacion.id}`)}
-              favorito={() => { agregarFavorito(creacion.id) }}
+        {creacionesFiltradas.map((creacion) => (
+          <Col key={creacion.id} xs={12} md={6} lg={3} className="mb-4">
+            <img
+              src={creacion.imagen}
+              alt={`Creación ${creacion.id}`}
+              className="creacion-photo"
+              style={{ width: '100%', cursor: 'pointer' }}
+              onClick={() => handlePhotoClick(creacion.id)}
             />
+            <h1 className='header-text-title'>{creacion.titulo}</h1>
           </Col>
+           
         ))}
       </Row>
     </Container>
-
   );
-}
+};
+
 export default Creaciones;
