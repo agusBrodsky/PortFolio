@@ -5,14 +5,16 @@ import './Favorito.css';
 
 
 function Favorito() {
-  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favoritos')) || []);
+  
+  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favorito')) || []);
+
   const [creaciones, setCreaciones] = useState([]);
   let p=null;
 
   useEffect(() => {
   axios.get('../listaCreaciones.JSON')
     .then(res => {
-      const nuevasCreaciones = res.data.filter(element => favoritosGuardados[element.id-1]?.almacenar === true);
+      const nuevasCreaciones = res.data.filter(element => favoritosGuardados[element.id]?.almacenar === true);
       setCreaciones(nuevasCreaciones);
     });
 }, [favoritosGuardados]);

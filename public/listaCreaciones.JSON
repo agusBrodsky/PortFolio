@@ -1,7 +1,8 @@
 [
+
     {
-        "id":1,
-        "imagen":"https://www.ellitoral.com/images/2023/08/16/CuuAcZ6EH_1300x655__1.jpg",
+        "id":0,
+        "imagen":["/assets/logo.png"],
         "titulo":"ProyectoFinal-Helpark",
         "descripcion":"Aplicacion para eficientizar la ayuda a la gente con Parkinson",
         "fecha":null,
@@ -13,8 +14,8 @@
         
     },
     {
-        "id":2,
-        "imagen":"https://www.ellitoral.com/images/2023/08/16/CuuAcZ6EH_1300x655__1.jpg",
+        "id":1,
+        "imagen":["/assets/llogo.png"],
         "titulo":"ProyectoFinal-HeartToHeart",
         "descripcion":"Aplicacion para los familiares de gente en un geriatico",
         "fecha":null,
@@ -25,8 +26,8 @@
         "favoritos": false
     },
     {
-        "id":3,
-        "imagen":"https://www.ellitoral.com/images/2023/08/16/CuuAcZ6EH_1300x655__1.jpg",
+        "id":2,
+        "imagen":["/assets/logo dai.png"],
         "titulo":"Dai-Brodsky-Rozenbaum-Jaichenco",
         "descripcion":"Aplicacion para login y registrarse",
         "fecha":null,
@@ -36,8 +37,8 @@
         "favoritos": false
     },
     {
-        "id":4,
-        "imagen":"https://www.ellitoral.com/images/2023/08/16/CuuAcZ6EH_1300x655__1.jpg",
+        "id":3,
+        "imagen":["/assets/peliculas.jpg"],
         "titulo":"TP09_Arfa_Rozenbaum",
         "descripcion":"Pagina web de películas",
         "fecha":null,
@@ -46,6 +47,65 @@
         "usuario":"Facundo Rozenbaum",
         "multAutor": false,
         "favoritos": false
+    },
+
+    {
+        "id":4,
+        "imagen":["/assets/carrito.jpg"],
+        "titulo":"TP 8- Carrito de compras",
+        "descripcion":"Pagina de productos para agregar al carrito",
+        "fecha":null,
+        "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true,
+        "favoritos": false
+    },
+
+    {
+        "id":5,
+        "imagen":["/assets/carrito.jpg"],
+        "titulo":"TP 8- Carrito de compras",
+        "descripcion":"Pagina de productos para agregar al carrito",
+        "fecha":null,
+        "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true,
+        "favoritos": false
+    },
+
+    {
+        "id":6,
+        "imagen":["/assets/carrito.jpg"],
+        "titulo":"TP 8- Carrito de compras",
+        "descripcion":"Pagina de productos para agregar al carrito",
+        "fecha":null,
+        "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true,
+        "favoritos": false
+    },
+    {
+        "id":7,
+        "imagen":["/assets/carrito.jpg"],
+        "titulo":"TP 8- Carrito de compras",
+        "descripcion":"Pagina de productos para agregar al carrito",
+        "fecha":null,
+        "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true,
+        "favoritos": false
+    },
+    {
+        "id":8,
+        "imagen":["/assets/carrito.jpg"],
+        "titulo":"TP 8- Carrito de compras",
+        "descripcion":"Pagina de productos para agregar al carrito",
+        "fecha":null,
+        "gitRepo":"https://github.com/facurozen/TP09_Arfa_Rozenbaum",
+        "usuario":"Facundo Rozenbaum y Agustín Brodsky",
+        "multAutor": true,
+        "favoritos": false
     }
+
     
 ]

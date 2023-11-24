@@ -17,7 +17,7 @@ const Creaciones = () => {
   let favoritosGuardados = null;
 
   const [favoritos, setFavoritos] = useState(() => {
-    favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
+    favoritosGuardados = JSON.parse(localStorage.getItem('favorito'));
     return favoritosGuardados || [];
   });
 
@@ -87,7 +87,7 @@ const Creaciones = () => {
               src={creacion.imagen}
               alt={`Creación ${creacion.id}`}
               className="creacion-photo"
-              style={{ width: '100%', cursor: 'pointer' }}
+              style={{ width: '50%', cursor: 'pointer' }}
               onClick={() => handlePhotoClick(creacion.id)}
             />
             <h1 className='header-text-title'>{creacion.titulo}</h1>
