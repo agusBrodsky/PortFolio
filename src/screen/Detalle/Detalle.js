@@ -18,6 +18,7 @@ function Detalle() {
     favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
     return favoritosGuardados || [];
   });
+  const [isFavorito,setIsFavorito] = useState(favoritos.some((favorito) => favorito.id === creacion.id));
 
   useEffect(() => {
     axios.get('../listaCreaciones.JSON').then((res) => {
@@ -27,30 +28,26 @@ function Detalle() {
         }
       });
 
-      if (!favoritosGuardados) {
+      /*if (favoritosGuardados) {
         setFavoritos(
           res.data.map((creacion) => ({
             id: creacion.id,
             almacenar: false,
           }))
         );
-      }
+      }*/
     });
   }, []);
 
-  const isFavorito = favoritos.some((favorito) => favorito.id === creacion.id);
-  
+
   const agregarQuitarFavorito = (id) => {
     setFavoritos((favs) => {
+        // creo nuevoEstado, es el array nuevo con todas las respuestas 
       const nuevoEstado = favs.map((favorito, index) =>
         index === id - 1 ? { ...favorito, almacenar: !favorito.almacenar } : favorito
       );
-  
-      // Si la creación se quitó de favoritos, actualiza localStorage
-      if (!nuevoEstado.find((favorito) => favorito.id === id)?.almacenar) {
-        localStorage.setItem('favoritos', JSON.stringify(nuevoEstado));
-      }
-  
+      setIsFavorito(!isFavorito);
+      
       return nuevoEstado;
     });
     console.log(`funcion agregar/quitar fav id:${id}`);
@@ -60,6 +57,7 @@ function Detalle() {
 
   useEffect(() => {
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
+
   }, [favoritos]);
 
   return (
@@ -106,7 +104,7 @@ function Detalle() {
                       onClick={() => agregarQuitarFavorito(creacion.id)}
                       style={{ background: 'linear-gradient(to left, #0ef, #c800ff)' }}
                     >
-                      {isFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                      {!isFavorito ? 'Agregar a favoritos' : 'Quitar de favoritos'}
                     </Button>
                   </Col>
                 </Row>
@@ -115,9 +113,8 @@ function Detalle() {
             </Row>
           </Row>
         </Col>
-
         <Col sm={4}>
-          <Banner texto={creacion.titulo} />
+          
         </Col>
       </Row>
     </Container>
