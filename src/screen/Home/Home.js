@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css"; // Archivo de estilos (si es necesario)
-import fotoPorfolio from '../../assets/FotoPorfolio.jpeg';
+//import fotoPorfolio from 'https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg';
+
 
 const Home = () => {
   return (
@@ -15,7 +16,7 @@ const Home = () => {
         </div>
       </div>
       <div className="image-section">
-        <img className="profile-img" src={fotoPorfolio} alt="..." />
+        <img className="profile-img" src='https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg' alt="..." />
       </div>
     </div>
   );

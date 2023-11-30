@@ -4,7 +4,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaVestPatches } from 'react-icons/fa';
-import fotoPorfolio from '../../assets/FotoPorfolio.jpeg';
+
+//import fotoPorfolio from '/assets/FotoPorfolio.jpeg';
+//import fotoPorfolio from 'https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg';
 
 const Hhome = () => {
   const [creaciones, setCreaciones] = useState([]);
@@ -51,7 +53,7 @@ const Hhome = () => {
         <Col className='colLeft'>
           <img
             className='claseImagen'
-            src={fotoPorfolio}
+            src='https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg'
             alt="Portfolio"
             style={{ cursor: 'pointer' }}
           />

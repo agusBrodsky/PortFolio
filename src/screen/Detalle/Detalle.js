@@ -6,56 +6,60 @@ import { useParams } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { BsGithub } from 'react-icons/bs';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaChessBishop, FaLinkedin } from 'react-icons/fa';
 
 function Detalle() {
   const navigate = useNavigate();
   const { id } = useParams();
+  let idCreacion = id;
   const [creacion, setCreacion] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const [favoritos, setFavoritos] = useState(() => {
-    const favoritosGuardados = JSON.parse(localStorage.getItem('favorito'));
-    return favoritosGuardados || {};
-  });
-  const [isFavorito,setIsFavorito] = useState(favoritos.some((favorito) => favorito.id === creacion.id));
+  const [arrayFavoritos, setArrayFavoritos] = useState({});
+  const [favoritos, setFavoritos] = useState({ id: idCreacion, almacenar: false });
 
-  useEffect(() => {
+
+  useEffect(() => { // esto funciona, guarda el objeto que deseo mostrar!!
     axios.get('../listaCreaciones.JSON').then((res) => {
-      const creacionEncontrada = res.data.find((element) => element.id == id);
-      if (creacionEncontrada) {
-        setCreacion(creacionEncontrada);
-      }
-
-      /*if (favoritos[id]) {
-        setFavoritos((prevFavoritos) => ({
-          ...prevFavoritos,
-          [id]: { almacenar: null },
-        }));
-        setLoading(true);
-      }*/
+      setCreacion(res.data[idCreacion]);
+      const favoritosGuardados = JSON.parse(localStorage.getItem('favoritos')) || [];
+      setArrayFavoritos(favoritosGuardados);
+      // array favoritos!
+      setFavoritos(favoritosGuardados[idCreacion - 1]); // objeto favorito!
+      console.log(favoritosGuardados);
     });
-  }, [favoritos, id]);
+  }, [idCreacion]);
+
 
   const agregarQuitarFavorito = () => {
-    setFavoritos((prevFavoritos) => {
-      const nuevoEstado = { ...prevFavoritos };
-      nuevoEstado[id] = { almacenar: !nuevoEstado[id]?.almacenar };
+    // Cambiar el valor de almacenar
+    setFavoritos(prevFavoritos => {
+      const nuevoFavoritos = { ...prevFavoritos, almacenar: !prevFavoritos.almacenar };
 
-      // Si la creación se quitó de favoritos, actualiza localStorage
-      if (!nuevoEstado[id]?.almacenar) {
-        localStorage.setItem('favorito', JSON.stringify(nuevoEstado));
+      // Verificar si el objeto ya está en el array
+      const existeEnFavoritos = arrayFavoritos.some(item => item.id === nuevoFavoritos.id);
+
+      if (nuevoFavoritos.almacenar) {
+        // Si almacenar es true y el objeto no está en el array, agregarlo
+        if (!existeEnFavoritos) {
+          setArrayFavoritos(prevArrayFavoritos => [...prevArrayFavoritos, nuevoFavoritos]);
+        }
+      } else {
+        // Si almacenar es false, filtrar el objeto del array
+        if (existeEnFavoritos) {
+          setArrayFavoritos(prevArrayFavoritos => prevArrayFavoritos.filter(item => item.id !== nuevoFavoritos.id));
+        }
       }
 
-      return nuevoEstado;
-    });
-    console.log(`funcion agregar/quitar fav id:${id}`);
-    
-  };
+      // Guardar el array actualizado en el localStorage
+      console.log(arrayFavoritos);
+      localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
 
-  useEffect(() => {
-    localStorage.setItem('favorito', JSON.stringify(favoritos));
-  }, [favoritos]);
+      console.log(`Función agregar/quitar fav id: ${idCreacion}`);
+
+      return nuevoFavoritos;
+    });
+  };
 
   return (
     <Container>
@@ -101,8 +105,8 @@ function Detalle() {
                       onClick={() => agregarQuitarFavorito()}
                       style={{ background: 'linear-gradient(to left, #0ef, #c800ff)' }}
                     >
-                      {!isFavorito ? 'Agregar a favoritos' : 'Quitar de favoritos'}
-                      {favoritos[creacion.id]?.almacenar ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                      {favoritos ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+
                     </Button>
                   </Col>
                 </Row>
@@ -112,7 +116,7 @@ function Detalle() {
           </Row>
         </Col>
         <Col sm={4}>
-          
+
         </Col>
       </Row>
     </Container>

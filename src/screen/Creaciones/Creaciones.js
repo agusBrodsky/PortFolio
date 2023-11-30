@@ -51,8 +51,8 @@ const Creaciones = () => {
     }
   }, [autorSeleccionado, creaciones]);
 
-  const handlePhotoClick = (id) => {
-    navigate(`/Detalle/${id}`);
+  const handlePhotoClick = (idCreacion) => {
+    navigate(`/Detalle/${idCreacion}`);
   };
 
  return (

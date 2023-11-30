@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import agusIndividual from '../../assets/agus_individual.jpeg';
-import facuIndividual from '../../assets/rozen_individual.jpeg'
+//import agusIndividual from '../../assets/agus_individual.jpeg';
+//import facuIndividual from '../../assets/rozen_individual.jpeg';
+//import agusIndividual from 'https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg';
+//import facuIndividual from 'https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const AboutUs = () => {
@@ -28,14 +30,14 @@ const AboutUs = () => {
                         <Link onClick={handleImg}>
                             <img
                                 className='rounded-image'
-                                src={facuIndividual}
+                                src='https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg'
 
                             />
                         </Link>
                         <Link onClick={handleImg}>
                             <img
                                 className='rounded-image'
-                                src={agusIndividual}
+                                src='https://i.pinimg.com/originals/d3/98/81/d3988178780bbe1a619655ddd6e47831.jpg'
                                 alt='Imagen 2'
                             />
                         </Link>

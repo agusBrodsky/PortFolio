@@ -9,11 +9,13 @@ import { FaClipboardList } from 'react-icons/fa';
 
 
 function Favorito() {
-  
-  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favorito')) || []);
 
-  const [creaciones, setCreaciones] = useState([]);
   let navigate = useNavigate();
+  
+  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favoritos')) || []);
+  const [creaciones, setCreaciones] = useState([]);
+  
+  
 
 
   useEffect(() => {
@@ -21,8 +23,8 @@ function Favorito() {
       .then(res => {
         const nuevasCreaciones = res.data.filter(element => favoritosGuardados[element.id - 1]?.almacenar === true);
         setCreaciones(nuevasCreaciones);
-        console.log(res.data)
       });
+      console.log(favoritosGuardados);
   }, [favoritosGuardados]);
 
   const handlePhotoClick = (id) => {
