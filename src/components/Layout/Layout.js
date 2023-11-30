@@ -1,9 +1,13 @@
-import React from 'react';
+import {React,useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import './Layout.css';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Badge, Container, Nav, Navbar } from 'react-bootstrap';
+import favoritosContext from '../../context/context.js'
+
 const Layout = () => {
+    const context = useContext(favoritosContext); 
+
     return (
         <>
             <Navbar data-bs-theme="dark">
@@ -12,7 +16,7 @@ const Layout = () => {
                         <Nav.Link > <NavLink to="/" className="navbar-link"> Home </NavLink></Nav.Link>
                         <Nav.Link ><NavLink to="/Creaciones" className="navbar-link"> Creaciones </NavLink></Nav.Link>
                         <Nav.Link ><NavLink to="/AboutUs" className="navbar-link"> AboutUs </NavLink></Nav.Link>
-                        <Nav.Link ><NavLink to="/Favorito" className="navbar-link"> Favoritos </NavLink></Nav.Link>
+                        <Nav.Link ><NavLink to="/Favorito" className="navbar-link"> Favoritos <Badge bg="success">{ context.arrayFavoritos.length }</Badge> </NavLink></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

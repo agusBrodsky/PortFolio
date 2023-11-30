@@ -1,64 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Detalle.css';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Banner from '../../components/Banner/Banner';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { BsGithub } from 'react-icons/bs';
-import { FaChessBishop, FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+import favoritosContext from '../../context/context.js'
 
 function Detalle() {
   const navigate = useNavigate();
   const { id } = useParams();
-  let idCreacion = id;
+  //let idCreacion = id;
   const [creacion, setCreacion] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const [arrayFavoritos, setArrayFavoritos] = useState({});
-  const [favoritos, setFavoritos] = useState({ id: idCreacion, almacenar: false });
+  const context = useContext(favoritosContext); 
+  //const [favoritos, setFavoritos] = useState({ id: idCreacion, almacenar: false });
 
 
   useEffect(() => { // esto funciona, guarda el objeto que deseo mostrar!!
     axios.get('../listaCreaciones.JSON').then((res) => {
-      setCreacion(res.data[idCreacion]);
-      const favoritosGuardados = JSON.parse(localStorage.getItem('favoritos')) || [];
-      setArrayFavoritos(favoritosGuardados);
+      setCreacion(res.data[id]);
       // array favoritos!
-      setFavoritos(favoritosGuardados[idCreacion - 1]); // objeto favorito!
-      console.log(favoritosGuardados);
+      //setFavoritos(arrayFavoritos[idCreacion] || {}); // objeto favorito!
+      //console.log(arrayFavoritos);
     });
-  }, [idCreacion]);
+  }, [id]);
 
 
   const agregarQuitarFavorito = () => {
     // Cambiar el valor de almacenar
-    setFavoritos(prevFavoritos => {
-      const nuevoFavoritos = { ...prevFavoritos, almacenar: !prevFavoritos.almacenar };
 
-      // Verificar si el objeto ya está en el array
-      const existeEnFavoritos = arrayFavoritos.some(item => item.id === nuevoFavoritos.id);
+    // Verificar si el objeto ya está en el array
+    const existeEnFavoritos = context.arrayFavoritos.some(item => item.id == id);
+    if (existeEnFavoritos) {
+      // Lo borramos
+      context.setFavoritosContext(prevArrayFavoritos => prevArrayFavoritos.filter(item => item.id != id));        
+    } else {
+      // Lo agregamos
+      context.setFavoritosContext(prevArrayFavoritos => [...prevArrayFavoritos, creacion]);
+    }
 
-      if (nuevoFavoritos.almacenar) {
-        // Si almacenar es true y el objeto no está en el array, agregarlo
-        if (!existeEnFavoritos) {
-          setArrayFavoritos(prevArrayFavoritos => [...prevArrayFavoritos, nuevoFavoritos]);
-        }
-      } else {
-        // Si almacenar es false, filtrar el objeto del array
-        if (existeEnFavoritos) {
-          setArrayFavoritos(prevArrayFavoritos => prevArrayFavoritos.filter(item => item.id !== nuevoFavoritos.id));
-        }
-      }
+  
+    console.log(`Función agregar/quitar fav id: ${id}`);
 
-      // Guardar el array actualizado en el localStorage
-      console.log(arrayFavoritos);
-      localStorage.setItem('favoritos', JSON.stringify(arrayFavoritos));
-
-      console.log(`Función agregar/quitar fav id: ${idCreacion}`);
-
-      return nuevoFavoritos;
-    });
+      //return nuevoFavoritos;
   };
 
   return (
@@ -105,7 +92,7 @@ function Detalle() {
                       onClick={() => agregarQuitarFavorito()}
                       style={{ background: 'linear-gradient(to left, #0ef, #c800ff)' }}
                     >
-                      {favoritos ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                      {context.arrayFavoritos.some(item => item.id == id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
 
                     </Button>
                   </Col>
