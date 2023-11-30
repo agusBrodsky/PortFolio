@@ -45,3 +45,7 @@ height: 80px;
     background-color: linear-gradient(to right, #0ef, #c800ff);
     font-size: 20px;
 }
+
+.imgCreacion {
+    width: 50% !important
+}

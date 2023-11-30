@@ -68,7 +68,7 @@ const Hhome = () => {
               src={creacion.imagen}
               alt={`Creación ${creacion.id}`}
               className="creacion-photo"
-              style={{ width: '100%', cursor: 'pointer' }}
+              style={{ width: '50%', cursor: 'pointer' }}
               onClick={() => handlePhotoClick(creacion.id)}
             />
           </Col>

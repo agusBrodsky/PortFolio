@@ -9,55 +9,52 @@ import { BsGithub } from 'react-icons/bs';
 import { FaLinkedin } from 'react-icons/fa';
 
 function Detalle() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [creacion, setCreacion] = useState({});
-  let favoritosGuardados = null;
+  const [loading, setLoading] = useState(false);
 
   const [favoritos, setFavoritos] = useState(() => {
-    favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
-    return favoritosGuardados || [];
+    const favoritosGuardados = JSON.parse(localStorage.getItem('favorito'));
+    return favoritosGuardados || {};
   });
   const [isFavorito,setIsFavorito] = useState(favoritos.some((favorito) => favorito.id === creacion.id));
 
   useEffect(() => {
     axios.get('../listaCreaciones.JSON').then((res) => {
-      res.data.forEach((element) => {
-        if (element.id == id) {
-          setCreacion(element);
-        }
-      });
+      const creacionEncontrada = res.data.find((element) => element.id == id);
+      if (creacionEncontrada) {
+        setCreacion(creacionEncontrada);
+      }
 
-      /*if (favoritosGuardados) {
-        setFavoritos(
-          res.data.map((creacion) => ({
-            id: creacion.id,
-            almacenar: false,
-          }))
-        );
+      /*if (favoritos[id]) {
+        setFavoritos((prevFavoritos) => ({
+          ...prevFavoritos,
+          [id]: { almacenar: null },
+        }));
+        setLoading(true);
       }*/
     });
-  }, []);
+  }, [favoritos, id]);
 
+  const agregarQuitarFavorito = () => {
+    setFavoritos((prevFavoritos) => {
+      const nuevoEstado = { ...prevFavoritos };
+      nuevoEstado[id] = { almacenar: !nuevoEstado[id]?.almacenar };
 
-  const agregarQuitarFavorito = (id) => {
-    setFavoritos((favs) => {
-        // creo nuevoEstado, es el array nuevo con todas las respuestas 
-      const nuevoEstado = favs.map((favorito, index) =>
-        index === id - 1 ? { ...favorito, almacenar: !favorito.almacenar } : favorito
-      );
-      setIsFavorito(!isFavorito);
-      
+      // Si la creación se quitó de favoritos, actualiza localStorage
+      if (!nuevoEstado[id]?.almacenar) {
+        localStorage.setItem('favorito', JSON.stringify(nuevoEstado));
+      }
+
       return nuevoEstado;
     });
     console.log(`funcion agregar/quitar fav id:${id}`);
+    
   };
-  
-
 
   useEffect(() => {
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
-
+    localStorage.setItem('favorito', JSON.stringify(favoritos));
   }, [favoritos]);
 
   return (
@@ -68,7 +65,7 @@ function Detalle() {
           <h3 style={{ background: 'linear-gradient(to left, #0ef, #c800ff)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Creado por {creacion.usuario}</h3>
           <Row>
             <Row style={{ height: '50vh' }}>
-              <img src={creacion.imagen} alt="Creacion" style={{ weight: '30%' }} />
+              <img className='imgCreacion' src={creacion.imagen} alt="Creacion" />
               <Row className='main-detalle-body'>
                 <Row className="main-detalle-texto">
                   <p>{creacion.descripcion}</p>
@@ -101,10 +98,11 @@ function Detalle() {
                     <Button
                       className="class-button"
                       variant="secondary"
-                      onClick={() => agregarQuitarFavorito(creacion.id)}
+                      onClick={() => agregarQuitarFavorito()}
                       style={{ background: 'linear-gradient(to left, #0ef, #c800ff)' }}
                     >
                       {!isFavorito ? 'Agregar a favoritos' : 'Quitar de favoritos'}
+                      {favoritos[creacion.id]?.almacenar ? 'Quitar de favoritos' : 'Agregar a favoritos'}
                     </Button>
                   </Col>
                 </Row>

@@ -9,7 +9,9 @@ import { FaClipboardList } from 'react-icons/fa';
 
 
 function Favorito() {
-  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favoritos')) || []);
+  
+  const [favoritosGuardados, setFavoritosGuardados] = useState(JSON.parse(localStorage.getItem('favorito')) || []);
+
   const [creaciones, setCreaciones] = useState([]);
   let navigate = useNavigate();
 
